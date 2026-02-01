@@ -1,13 +1,13 @@
 import { 
   Home, 
   FileText, 
-  Sparkles, 
   Settings, 
   LogOut,
   User,
   BarChart3,
   Palette,
   Zap,
+  Layers,
 } from 'lucide-react';
 import { ParticlesBackground } from '@/components/ParticlesBackground';
 import { useAuth } from '@/contexts/AuthContext';
@@ -24,7 +24,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { icon: Home, label: 'Dashboard', active: true },
   { icon: FileText, label: 'Content' },
-  { icon: Sparkles, label: 'AI Tools' },
+  { icon: Layers, label: 'Projects' },
   { icon: Palette, label: 'Brand Voice' },
   { icon: BarChart3, label: 'Analytics' },
   { icon: Settings, label: 'Settings' },
@@ -118,10 +118,10 @@ const IndividualDashboard = () => {
               icon={FileText}
             />
             <StatCard
-              title="AI Generations"
-              value="156"
+              title="Active Projects"
+              value="8"
               change="+28%"
-              icon={Sparkles}
+              icon={Layers}
             />
             <StatCard
               title="Brand Score"
@@ -143,9 +143,9 @@ const IndividualDashboard = () => {
                 description="Create new content piece"
               />
               <QuickActionCard
-                icon={Sparkles}
-                title="AI Generate"
-                description="Generate with AI"
+                icon={Layers}
+                title="New Project"
+                description="Start a new project"
               />
               <QuickActionCard
                 icon={Palette}
@@ -173,11 +173,11 @@ const IndividualDashboard = () => {
                     className="flex items-center gap-4 py-3 border-b border-border last:border-0"
                   >
                     <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <Sparkles className="w-5 h-5 text-primary" />
+                      <FileText className="w-5 h-5 text-primary" />
                     </div>
                     <div className="flex-1">
                       <p className="text-sm font-medium text-foreground">
-                        Generated blog post content
+                        Created blog post content
                       </p>
                       <p className="text-xs text-muted-foreground">
                         2 hours ago

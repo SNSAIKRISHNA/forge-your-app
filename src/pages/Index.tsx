@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Zap, ArrowRight, Users, Sparkles, Shield } from 'lucide-react';
+import { Zap, ArrowRight, Users, Shield, Layers } from 'lucide-react';
 import { ParticlesBackground } from '@/components/ParticlesBackground';
 import { GradientButton } from '@/components/ui/GradientButton';
 
@@ -35,18 +35,18 @@ const Index = () => {
       <section className="relative z-10 px-6 lg:px-12 pt-20 pb-32">
         <div className="max-w-5xl mx-auto text-center">
           <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
-            <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-sm font-mono text-primary">AI-Powered Content Platform</span>
+            <Zap className="w-4 h-4 text-primary" />
+            <span className="text-sm font-mono text-primary">Content Platform</span>
           </div>
           
           <h1 className="font-display text-5xl md:text-7xl font-bold text-foreground mb-6 leading-tight">
-            Create content that
+            Build your brand
             <br />
-            <span className="text-gradient italic">defines your brand</span>
+            <span className="text-gradient italic">with Crystal</span>
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 font-mono">
-            Crystal helps creators and teams build their brand voice, generate content, and scale their presence with AI-powered tools.
+            Crystal helps creators and teams build their brand voice, manage content, and scale their presence efficiently.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -72,7 +72,7 @@ const Index = () => {
             <FeatureCard
               icon={Users}
               title="For Individuals"
-              description="Build your personal brand with AI-tailored content that matches your unique voice and style."
+              description="Build your personal brand with content that matches your unique voice and style."
             />
             <FeatureCard
               icon={Shield}
@@ -80,9 +80,9 @@ const Index = () => {
               description="Collaborate with your team, manage brand guidelines, and scale content creation together."
             />
             <FeatureCard
-              icon={Sparkles}
-              title="AI-Powered"
-              description="Generate high-quality content instantly with advanced AI that learns your preferences."
+              icon={Layers}
+              title="Powerful Tools"
+              description="Create high-quality content with powerful tools designed to streamline your workflow."
             />
           </div>
         </div>

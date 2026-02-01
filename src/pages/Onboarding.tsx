@@ -137,7 +137,7 @@ const Onboarding = () => {
                   'Personal brand voice & tone setup',
                   'Audience-specific content preferences',
                   'Creator-focused workflows',
-                  'AI outputs tailored to you',
+                  'Outputs tailored to you',
                 ]}
                 selected={profileType === 'individual'}
                 onClick={() => handleProfileTypeSelect('individual')}
