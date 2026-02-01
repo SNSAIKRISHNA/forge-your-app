@@ -11,7 +11,7 @@ import {
   Shield,
   Trash2,
   FileText,
-  Sparkles,
+  Layers,
   BarChart3,
   Zap,
 } from 'lucide-react';
@@ -51,7 +51,7 @@ const navItems: NavItem[] = [
   { icon: Home, label: 'Dashboard' },
   { icon: Users, label: 'Team' },
   { icon: FileText, label: 'Content' },
-  { icon: Sparkles, label: 'AI Tools' },
+  { icon: Layers, label: 'Projects' },
   { icon: BarChart3, label: 'Analytics' },
   { icon: Settings, label: 'Settings' },
 ];
@@ -175,9 +175,9 @@ const OrganizationDashboard = () => {
                   icon={FileText}
                 />
                 <StatCard
-                  title="AI Generations"
-                  value="1.2k"
-                  icon={Sparkles}
+                  title="Active Projects"
+                  value="24"
+                  icon={Layers}
                 />
                 <StatCard
                   title="Brand Score"
