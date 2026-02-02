@@ -1,125 +1,95 @@
 import { Link } from 'react-router-dom';
-import { Zap, ArrowRight, Users, Shield, Layers } from 'lucide-react';
-import { ParticlesBackground } from '@/components/ParticlesBackground';
+import { Sparkles } from 'lucide-react';
 import { GradientButton } from '@/components/ui/GradientButton';
+import { CrystalAnimation } from '@/components/CrystalAnimation';
+
+const featurePills = [
+  { title: 'CrystalStudio', subtitle: 'Plan + Create' },
+  { title: 'CrystalCast', subtitle: 'Publish + Distribute' },
+  { title: 'CrystalOptimize', subtitle: 'Test + Improve' },
+  { title: 'CrystalVision', subtitle: 'Understand + Recommend' },
+];
 
 const Index = () => {
   return (
-    <div className="min-h-screen relative overflow-hidden">
-      <ParticlesBackground />
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Background gradients */}
+      <div className="absolute inset-0 bg-gradient-radial from-primary/5 via-transparent to-transparent" />
+      <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-accent/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-primary/5 rounded-full blur-3xl" />
       
+      {/* Grid pattern overlay */}
+      <div 
+        className="absolute inset-0 opacity-[0.02]" 
+        style={{
+          backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
+          backgroundSize: '50px 50px'
+        }}
+      />
+
       {/* Navigation */}
       <nav className="relative z-10 flex items-center justify-between px-6 lg:px-12 py-6">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl icon-container flex items-center justify-center">
-            <Zap className="w-5 h-5 text-primary-foreground" />
+          <div className="w-10 h-10 rounded-xl bg-primary/20 border border-primary/30 flex items-center justify-center">
+            <span className="font-display font-bold text-primary text-lg">C</span>
           </div>
-          <span className="font-display font-bold text-xl text-foreground">Crystal</span>
-        </div>
-        
-        <div className="flex items-center gap-4">
-          <Link to="/login">
-            <GradientButton variant="outline" size="sm">
-              Sign In
-            </GradientButton>
-          </Link>
-          <Link to="/register">
-            <GradientButton size="sm">
-              Get Started
-            </GradientButton>
-          </Link>
+          <span className="font-sans font-semibold text-lg text-foreground">Crystal</span>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="relative z-10 px-6 lg:px-12 pt-20 pb-32">
-        <div className="max-w-5xl mx-auto text-center">
+      <section className="relative z-10 px-6 lg:px-12 pt-8 pb-16">
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Crystal Animation */}
+          <div className="mb-8">
+            <CrystalAnimation />
+          </div>
+
+          {/* Welcome badge */}
           <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
-            <Zap className="w-4 h-4 text-primary" />
-            <span className="text-sm font-mono text-primary">Content Platform</span>
+            <Sparkles className="w-4 h-4 text-primary" />
+            <span className="text-sm font-sans text-primary">Welcome to Crystal Suite</span>
           </div>
           
-          <h1 className="font-display text-5xl md:text-7xl font-bold text-foreground mb-6 leading-tight">
-            Build your brand
+          {/* Main heading */}
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            <span className="text-gradient">Let's Shape Your</span>
             <br />
-            <span className="text-gradient italic">with Crystal</span>
+            <span className="text-gradient">Brand Identity</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 font-mono">
-            Crystal helps creators and teams build their brand voice, manage content, and scale their presence efficiently.
+          {/* Subtitle */}
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 font-sans leading-relaxed">
+            Your crystal will evolve as you define your brand's voice, personality, and content focus. Together, we'll create content that truly represents your unique identity.
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/register">
-              <GradientButton size="lg">
-                Start for Free
-                <ArrowRight className="w-5 h-5" />
-              </GradientButton>
-            </Link>
-            <Link to="/login">
-              <GradientButton variant="outline" size="lg">
-                Sign In
-              </GradientButton>
-            </Link>
+          {/* Feature pills */}
+          <div className="flex flex-wrap justify-center gap-3 mb-10">
+            {featurePills.map((pill) => (
+              <div key={pill.title} className="feature-pill">
+                <p className="font-semibold text-foreground text-sm">{pill.title}</p>
+                <p className="text-xs text-muted-foreground">{pill.subtitle}</p>
+              </div>
+            ))}
           </div>
-        </div>
-      </section>
 
-      {/* Features Grid */}
-      <section className="relative z-10 px-6 lg:px-12 pb-32">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-6">
-            <FeatureCard
-              icon={Users}
-              title="For Individuals"
-              description="Build your personal brand with content that matches your unique voice and style."
-            />
-            <FeatureCard
-              icon={Shield}
-              title="For Organizations"
-              description="Collaborate with your team, manage brand guidelines, and scale content creation together."
-            />
-            <FeatureCard
-              icon={Layers}
-              title="Powerful Tools"
-              description="Create high-quality content with powerful tools designed to streamline your workflow."
-            />
-          </div>
+          {/* CTA Button */}
+          <Link to="/register">
+            <GradientButton size="lg" className="min-w-[200px]">
+              Begin Your Journey
+            </GradientButton>
+          </Link>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="relative z-10 border-t border-border px-6 lg:px-12 py-8">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Zap className="w-5 h-5 text-primary" />
-            <span className="font-display font-bold text-foreground">Crystal</span>
-          </div>
-          <p className="text-sm text-muted-foreground">
-            © 2026 Crystal. All rights reserved.
-          </p>
-        </div>
+      <footer className="relative z-10 py-8 text-center">
+        <p className="text-sm text-muted-foreground">
+          © 2026 Crystal Suite. All rights reserved.
+        </p>
       </footer>
     </div>
   );
 };
-
-const FeatureCard = ({
-  icon: Icon,
-  title,
-  description,
-}: {
-  icon: React.ElementType;
-  title: string;
-  description: string;
-}) => (
-  <div className="card-hover bg-card rounded-2xl p-8 gradient-bar-bottom">
-    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-      <Icon className="w-7 h-7 text-primary" />
-    </div>
-    <h3 className="font-display text-xl font-bold text-foreground mb-3">{title}</h3>
-    <p className="text-muted-foreground leading-relaxed">{description}</p>
-  </div>
-);
 
 export default Index;
