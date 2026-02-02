@@ -6,68 +6,70 @@
 
 @layer base {
   :root {
-    /* Deep space dark theme */
-    --background: 220 25% 6%;
-    --foreground: 210 40% 96%;
+    /* Deep space dark theme - matching Crystal Agent Forge */
+    --background: 222 47% 8%;
+    --foreground: 210 40% 98%;
 
-    --card: 220 25% 10%;
-    --card-foreground: 210 40% 96%;
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 220 25% 10%;
-    --popover-foreground: 210 40% 96%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
 
-    /* Cyan/Blue primary colors */
-    --primary: 197 100% 50%;
-    --primary-foreground: 220 25% 6%;
+    /* Cyan/Teal primary colors - matching Crystal Agent Forge */
+    --primary: 180 100% 45%;
+    --primary-foreground: 222 47% 8%;
 
-    --secondary: 220 25% 14%;
-    --secondary-foreground: 210 40% 96%;
+    --secondary: 222 47% 15%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 220 20% 18%;
+    --muted: 222 30% 18%;
     --muted-foreground: 215 20% 55%;
 
-    --accent: 250 80% 65%;
+    /* Violet/Purple accent */
+    --accent: 270 60% 60%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 20% 18%;
-    --input: 220 20% 14%;
-    --ring: 197 100% 50%;
+    --border: 222 30% 18%;
+    --input: 222 30% 14%;
+    --ring: 180 100% 45%;
 
     --radius: 0.75rem;
 
-    /* Custom colors */
-    --cyan-glow: 197 100% 50%;
-    --blue-accent: 210 100% 60%;
-    --violet-accent: 250 80% 65%;
+    /* Custom colors - Crystal Agent Forge palette */
+    --cyan-glow: 180 100% 45%;
+    --blue-accent: 200 100% 55%;
+    --violet-accent: 270 60% 60%;
     --success: 160 84% 40%;
     --warning: 38 92% 50%;
 
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(197, 100%, 50%) 0%, hsl(210, 100%, 60%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(210, 100%, 60%) 0%, hsl(250, 80%, 65%) 100%);
-    --gradient-button: linear-gradient(90deg, hsl(197, 100%, 50%) 0%, hsl(210, 100%, 60%) 50%, hsl(250, 80%, 65%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(220, 25%, 12%) 0%, hsl(220, 25%, 8%) 100%);
+    /* Gradients - matching Crystal Agent Forge */
+    --gradient-primary: linear-gradient(135deg, hsl(180, 100%, 45%) 0%, hsl(200, 100%, 55%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(200, 100%, 55%) 0%, hsl(270, 60%, 60%) 100%);
+    --gradient-button: linear-gradient(90deg, hsl(180, 100%, 45%) 0%, hsl(200, 100%, 55%) 40%, hsl(270, 60%, 60%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(222, 47%, 13%) 0%, hsl(222, 47%, 9%) 100%);
     
-    /* Shadows */
-    --shadow-glow: 0 0 30px -5px hsl(197, 100%, 50%, 0.3);
-    --shadow-card: 0 4px 20px -2px hsl(0, 0%, 0%, 0.3);
+    /* Shadows - matching Crystal Agent Forge glow effects */
+    --shadow-glow: 0 0 40px -5px hsl(180, 100%, 45%, 0.35);
+    --shadow-button-glow: 0 8px 32px -4px hsl(180, 100%, 45%, 0.4);
+    --shadow-card: 0 4px 24px -4px hsl(0, 0%, 0%, 0.4);
 
-    --sidebar-background: 220 25% 8%;
-    --sidebar-foreground: 210 40% 96%;
-    --sidebar-primary: 197 100% 50%;
-    --sidebar-primary-foreground: 220 25% 6%;
-    --sidebar-accent: 220 25% 14%;
-    --sidebar-accent-foreground: 210 40% 96%;
-    --sidebar-border: 220 20% 18%;
-    --sidebar-ring: 197 100% 50%;
+    --sidebar-background: 222 47% 9%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 180 100% 45%;
+    --sidebar-primary-foreground: 222 47% 8%;
+    --sidebar-accent: 222 47% 15%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 222 30% 18%;
+    --sidebar-ring: 180 100% 45%;
   }
 
   .dark {
-    --background: 220 25% 6%;
-    --foreground: 210 40% 96%;
+    --background: 222 47% 8%;
+    --foreground: 210 40% 98%;
   }
 }
 
@@ -104,9 +106,10 @@
     position: absolute;
     width: 3px;
     height: 3px;
-    background: hsl(var(--primary) / 0.4);
+    background: hsl(180, 100%, 45%, 0.5);
     border-radius: 50%;
     animation: float-particle 20s infinite ease-in-out;
+  }
   }
 
   .particle::before {
@@ -156,16 +159,17 @@
     transition: width 0.5s ease-out;
   }
 
-  /* Card hover effects */
+  /* Card hover effects - matching Crystal Agent Forge */
   .card-hover {
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     border: 1px solid hsl(var(--border));
+    position: relative;
   }
 
   .card-hover:hover {
-    border-color: hsl(var(--primary) / 0.5);
-    box-shadow: var(--shadow-glow);
-    transform: translateY(-2px);
+    border-color: hsl(var(--primary) / 0.4);
+    box-shadow: 0 0 35px -10px hsl(180, 100%, 45%, 0.3);
+    transform: translateY(-3px);
   }
 
   /* Gradient text */
@@ -183,15 +187,20 @@
     background-clip: text;
   }
 
-  /* Button gradient */
+  /* Button gradient - matching Crystal Agent Forge */
   .btn-gradient {
-    background: var(--gradient-primary);
-    transition: all 0.3s ease;
+    background: var(--gradient-button);
+    background-size: 200% 100%;
+    background-position: 0% 50%;
+    box-shadow: var(--shadow-button-glow);
+    transition: all 0.4s ease;
   }
 
   .btn-gradient:hover {
-    filter: brightness(1.1);
-    box-shadow: var(--shadow-glow);
+    background-position: 100% 50%;
+    filter: brightness(1.15);
+    box-shadow: 0 12px 40px -4px hsl(180, 100%, 45%, 0.5);
+    transform: translateY(-2px);
   }
 
   /* Input styling */
@@ -269,28 +278,36 @@
   .stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
   .stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
 
-  /* Icon container */
+  /* Icon container - matching Crystal Agent Forge */
   .icon-container {
-    background: var(--gradient-primary);
+    background: var(--gradient-button);
+    background-size: 200% 100%;
     box-shadow: var(--shadow-glow);
+    transition: all 0.3s ease;
   }
 
-  /* Selection card */
+  .icon-container:hover {
+    box-shadow: 0 0 50px -5px hsl(180, 100%, 45%, 0.5);
+  }
+
+  /* Selection card - matching Crystal Agent Forge */
   .selection-card {
     background: var(--gradient-card);
     border: 1px solid hsl(var(--border));
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     cursor: pointer;
+    position: relative;
   }
 
   .selection-card:hover,
   .selection-card.selected {
-    border-color: hsl(var(--primary));
-    box-shadow: var(--shadow-glow);
+    border-color: hsl(var(--primary) / 0.6);
+    box-shadow: 0 0 40px -10px hsl(180, 100%, 45%, 0.35);
   }
 
   .selection-card.selected {
-    background: linear-gradient(180deg, hsl(220, 25%, 14%) 0%, hsl(220, 25%, 10%) 100%);
+    background: linear-gradient(180deg, hsl(222, 47%, 15%) 0%, hsl(222, 47%, 11%) 100%);
+    border-color: hsl(var(--primary));
   }
 
   /* Bottom gradient bar on cards */

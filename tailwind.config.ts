@@ -65,6 +65,9 @@ export default {
         cyan: {
           glow: "hsl(var(--cyan-glow))",
         },
+        violet: {
+          accent: "hsl(var(--violet-accent))",
+        },
         success: "hsl(var(--success))",
         warning: "hsl(var(--warning))",
       },
