@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User, Building2, ArrowLeft } from 'lucide-react';
-import { ParticlesBackground } from '@/components/ParticlesBackground';
 import { ProgressBar } from '@/components/ui/ProgressBar';
 import { GradientButton } from '@/components/ui/GradientButton';
 import { GradientInput } from '@/components/ui/GradientInput';
@@ -61,7 +60,7 @@ const Onboarding = () => {
   const [orgRole, setOrgRole] = useState('owner');
   const [website, setWebsite] = useState('');
   
-  const { setUserProfile, createOrganization, user } = useAuth();
+  const { setUserProfile, createOrganization } = useAuth();
   const navigate = useNavigate();
 
   const handleProfileTypeSelect = (type: ProfileType) => {
@@ -96,10 +95,22 @@ const Onboarding = () => {
   };
 
   return (
-    <div className="min-h-screen px-4 py-8 relative">
-      <ParticlesBackground />
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Background gradients */}
+      <div className="absolute inset-0 bg-gradient-radial from-primary/5 via-transparent to-transparent" />
+      <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-accent/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-primary/5 rounded-full blur-3xl" />
       
-      <div className="max-w-4xl mx-auto z-10 relative">
+      {/* Grid pattern overlay */}
+      <div 
+        className="absolute inset-0 opacity-[0.02]" 
+        style={{
+          backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
+          backgroundSize: '50px 50px'
+        }}
+      />
+      
+      <div className="relative z-10 max-w-4xl mx-auto px-4 py-8">
         <ProgressBar 
           step={step} 
           totalSteps={3} 
@@ -108,23 +119,23 @@ const Onboarding = () => {
 
         {/* Step 1: Profile Type Selection */}
         {step === 1 && (
-          <div className="fade-in">
+          <div className="animate-fade-in">
             <div className="mb-4">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 text-primary text-xs font-mono font-semibold tracking-wider">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 text-primary text-xs font-medium tracking-wider">
                 <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                 PROFILE SETUP
               </span>
             </div>
             
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-2">
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
               Choose your profile
             </h1>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-gradient mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-gradient mb-6">
               Type that defines everything
             </h2>
             
-            <p className="text-muted-foreground font-mono text-sm mb-12 max-w-xl">
-              This choice shapes your onboarding, recommendations, and how your content is generated later.
+            <p className="text-muted-foreground text-sm mb-12 max-w-xl">
+              This choice shapes your onboarding, recommendations, and how your AI avatar is generated later.
             </p>
 
             <div className="grid md:grid-cols-2 gap-6">
@@ -136,7 +147,7 @@ const Onboarding = () => {
                 features={[
                   'Personal brand voice & tone setup',
                   'Audience-specific content preferences',
-                  'Creator-focused workflows',
+                  'Creator-focused AI workflows',
                   'Outputs tailored to you',
                 ]}
                 selected={profileType === 'individual'}
@@ -147,11 +158,11 @@ const Onboarding = () => {
                 icon={Building2}
                 label="FOR TEAMS"
                 title="Organization"
-                description="Ideal for companies, agencies, and teams collaborating on projects and managing workflows together."
+                description="Ideal for companies, agencies, and teams collaborating on AI-powered projects and managing workflows together."
                 features={[
                   'Shared brand voice across teams',
                   'Centralized guidelines & assets',
-                  'Multi-user workflows & roles',
+                  'Multi-user AI workflows & roles',
                   'Scales with growing teams',
                 ]}
                 selected={profileType === 'organization'}
@@ -163,7 +174,7 @@ const Onboarding = () => {
 
         {/* Step 2: Individual Setup */}
         {step === 2 && profileType === 'individual' && (
-          <div className="fade-in max-w-lg mx-auto">
+          <div className="animate-fade-in max-w-lg mx-auto">
             <button
               onClick={handleBack}
               className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
@@ -172,15 +183,15 @@ const Onboarding = () => {
               Change profile type
             </button>
             
-            <h1 className="font-display text-4xl font-bold text-foreground mb-2">
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
               Let's personalize
             </h1>
-            <h2 className="font-display text-4xl font-bold text-gradient-accent mb-6">
-              your experience
+            <h2 className="text-3xl md:text-4xl font-bold text-gradient mb-6">
+              your AI experience
             </h2>
             
-            <p className="text-muted-foreground font-mono text-sm mb-8">
-              These details help us tailor your brand voice, content style, and recommendations just for you.
+            <p className="text-muted-foreground text-sm mb-8">
+              These details help us tailor your AI avatar's voice, content style, and recommendations just for you.
             </p>
 
             <div className="space-y-6">
@@ -201,7 +212,7 @@ const Onboarding = () => {
 
               <GradientButton
                 onClick={handleIndividualSubmit}
-                className="w-full"
+                className="w-full h-14 rounded-2xl text-lg"
                 size="lg"
                 disabled={!fullName}
               >
@@ -217,7 +228,7 @@ const Onboarding = () => {
 
         {/* Step 2: Organization Setup */}
         {step === 2 && profileType === 'organization' && (
-          <div className="fade-in max-w-lg mx-auto">
+          <div className="animate-fade-in max-w-lg mx-auto">
             <button
               onClick={handleBack}
               className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
@@ -226,14 +237,14 @@ const Onboarding = () => {
               Change profile type
             </button>
             
-            <h1 className="font-display text-4xl font-bold text-foreground mb-2">
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
               Let's tailor this for
             </h1>
-            <h2 className="font-display text-4xl font-bold text-gradient mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-gradient mb-6">
               your team
             </h2>
             
-            <p className="text-muted-foreground font-mono text-sm mb-8">
+            <p className="text-muted-foreground text-sm mb-8">
               Create an organization and assign your role. You can add or join multiple organizations later.
             </p>
 
@@ -303,7 +314,7 @@ const Onboarding = () => {
 
               <GradientButton
                 onClick={handleOrganizationSubmit}
-                className="w-full"
+                className="w-full h-14 rounded-2xl text-lg"
                 size="lg"
                 disabled={!companyName || !industry || !teamSize}
               >
