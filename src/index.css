@@ -444,19 +444,23 @@
     );
   }
 
-  /* Feature pill styles */
-  .feature-pill {
-    background: hsl(var(--card));
+  /* Glass card style */
+  .glass-card {
+    background: hsl(var(--card) / 0.6);
     border: 1px solid hsl(var(--border));
-    border-radius: 9999px;
-    padding: 1rem 1.5rem;
-    text-align: center;
+    border-radius: 0.75rem;
+    backdrop-filter: blur(8px);
     transition: all 0.3s ease;
   }
 
-  .feature-pill:hover {
-    border-color: hsl(var(--primary) / 0.4);
-    box-shadow: 0 0 20px -5px hsl(180, 100%, 45%, 0.2);
+  .glass-card:hover {
+    border-color: hsl(var(--primary) / 0.3);
+    box-shadow: 0 0 20px -5px hsl(180, 100%, 45%, 0.15);
+  }
+
+  /* Radial gradient background */
+  .bg-gradient-radial {
+    background: radial-gradient(ellipse at center, var(--tw-gradient-from) 0%, var(--tw-gradient-via) 50%, var(--tw-gradient-to) 100%);
   }
 }
 

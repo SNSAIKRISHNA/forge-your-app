@@ -9,7 +9,6 @@ import {
   Zap,
   Layers,
 } from 'lucide-react';
-import { ParticlesBackground } from '@/components/ParticlesBackground';
 import { useAuth } from '@/contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -41,8 +40,11 @@ const IndividualDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen flex">
-      <ParticlesBackground />
+    <div className="min-h-screen bg-background relative overflow-hidden flex">
+      {/* Background gradients */}
+      <div className="fixed inset-0 bg-gradient-radial from-primary/5 via-transparent to-transparent pointer-events-none" />
+      <div className="fixed top-1/4 -left-1/4 w-1/2 h-1/2 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="fixed bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
       
       {/* Sidebar */}
       <aside className="w-64 bg-card/50 backdrop-blur-sm border-r border-border p-6 flex flex-col relative z-10">
@@ -50,7 +52,7 @@ const IndividualDashboard = () => {
           <div className="w-10 h-10 rounded-xl icon-container flex items-center justify-center">
             <Zap className="w-5 h-5 text-primary-foreground" />
           </div>
-          <span className="font-display font-bold text-lg text-foreground">Crystal</span>
+          <span className="font-semibold text-lg text-foreground">Crystal AI</span>
         </div>
 
         <nav className="flex-1 space-y-1">
@@ -100,17 +102,17 @@ const IndividualDashboard = () => {
       <main className="flex-1 p-8 relative z-10 overflow-auto">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="mb-10 fade-in">
-            <h1 className="font-display text-3xl font-bold text-foreground mb-2">
+          <div className="mb-10 animate-fade-in">
+            <h1 className="text-3xl font-bold text-foreground mb-2">
               Welcome back, {user?.fullName?.split(' ')[0] || 'Creator'}
             </h1>
-            <p className="text-muted-foreground font-mono text-sm">
-              Here's your personal dashboard overview
+            <p className="text-muted-foreground text-sm">
+              Here's your personal AI dashboard overview
             </p>
           </div>
 
           {/* Stats Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 stagger-children">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
             <StatCard
               title="Content Created"
               value="24"
@@ -132,40 +134,40 @@ const IndividualDashboard = () => {
           </div>
 
           {/* Quick Actions */}
-          <div className="mb-10 slide-up" style={{ animationDelay: '0.3s' }}>
-            <h2 className="font-display text-xl font-bold text-foreground mb-4">
+          <div className="mb-10">
+            <h2 className="text-xl font-bold text-foreground mb-4">
               Quick Actions
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <QuickActionCard
                 icon={FileText}
                 title="New Content"
-                description="Create new content piece"
+                description="Create AI-powered content"
               />
               <QuickActionCard
                 icon={Layers}
                 title="New Project"
-                description="Start a new project"
+                description="Start an AI project"
               />
               <QuickActionCard
                 icon={Palette}
                 title="Brand Voice"
-                description="Update your voice"
+                description="Update your AI voice"
               />
               <QuickActionCard
                 icon={Settings}
                 title="Preferences"
-                description="Adjust settings"
+                description="Adjust AI settings"
               />
             </div>
           </div>
 
           {/* Recent Activity */}
-          <div className="slide-up" style={{ animationDelay: '0.4s' }}>
-            <h2 className="font-display text-xl font-bold text-foreground mb-4">
+          <div>
+            <h2 className="text-xl font-bold text-foreground mb-4">
               Recent Activity
             </h2>
-            <div className="bg-card rounded-xl border border-border p-6">
+            <div className="glass-card p-6">
               <div className="space-y-4">
                 {[1, 2, 3].map((i) => (
                   <div
@@ -177,7 +179,7 @@ const IndividualDashboard = () => {
                     </div>
                     <div className="flex-1">
                       <p className="text-sm font-medium text-foreground">
-                        Created blog post content
+                        AI generated blog post content
                       </p>
                       <p className="text-xs text-muted-foreground">
                         2 hours ago
@@ -208,7 +210,7 @@ const StatCard = ({
   change: string;
   icon: React.ElementType;
 }) => (
-  <div className="card-hover bg-card rounded-xl p-6">
+  <div className="glass-card p-6">
     <div className="flex items-start justify-between mb-4">
       <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
         <Icon className="w-6 h-6 text-primary" />
@@ -231,7 +233,7 @@ const QuickActionCard = ({
   title: string;
   description: string;
 }) => (
-  <button className="card-hover bg-card rounded-xl p-5 text-left transition-all group">
+  <button className="glass-card p-5 text-left transition-all group">
     <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
       <Icon className="w-5 h-5 text-primary" />
     </div>

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserPlus } from 'lucide-react';
-import { ParticlesBackground } from '@/components/ParticlesBackground';
 import { GradientButton } from '@/components/ui/GradientButton';
 import { GradientInput } from '@/components/ui/GradientInput';
 import { IconBadge } from '@/components/ui/IconBadge';
@@ -44,68 +43,82 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 relative">
-      <ParticlesBackground />
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Background gradients */}
+      <div className="absolute inset-0 bg-gradient-radial from-primary/5 via-transparent to-transparent" />
+      <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-accent/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-primary/5 rounded-full blur-3xl" />
       
-      <div className="w-full max-w-md z-10 fade-in">
-        <div className="text-center mb-8">
-          <div className="flex justify-center mb-6">
-            <IconBadge icon={UserPlus} size="lg" />
+      {/* Grid pattern overlay */}
+      <div 
+        className="absolute inset-0 opacity-[0.02]" 
+        style={{
+          backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
+          backgroundSize: '50px 50px'
+        }}
+      />
+
+      <div className="relative z-10 min-h-screen flex items-center justify-center px-4">
+        <div className="w-full max-w-md animate-fade-in">
+          <div className="text-center mb-8">
+            <div className="flex justify-center mb-6">
+              <IconBadge icon={UserPlus} size="lg" />
+            </div>
+            
+            <h1 className="text-3xl md:text-4xl font-bold text-gradient mb-3">
+              Join Crystal AI
+            </h1>
+            <p className="text-muted-foreground text-sm">
+              Create your account and start your journey
+            </p>
           </div>
-          
-          <h1 className="font-display text-4xl font-bold italic text-foreground mb-3">
-            Join Us Today
-          </h1>
-          <p className="text-muted-foreground font-mono text-sm">
-            Create your account and start your journey
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <GradientInput
+              type="email"
+              placeholder="Email address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            
+            <GradientInput
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            
+            <GradientInput
+              type="password"
+              placeholder="Confirm password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+
+            {error && (
+              <p className="text-destructive text-sm text-center">{error}</p>
+            )}
+
+            <GradientButton
+              type="submit"
+              className="w-full h-14 rounded-2xl text-lg"
+              size="lg"
+              disabled={isLoading}
+            >
+              {isLoading ? 'Creating account...' : 'Create Account'}
+            </GradientButton>
+          </form>
+
+          <p className="text-center mt-6 text-muted-foreground text-sm">
+            Already have an account?{' '}
+            <Link to="/login" className="text-primary hover:underline">
+              Sign in
+            </Link>
           </p>
         </div>
-
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <GradientInput
-            type="email"
-            placeholder="Email address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          
-          <GradientInput
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          
-          <GradientInput
-            type="password"
-            placeholder="Confirm password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-
-          {error && (
-            <p className="text-destructive text-sm text-center">{error}</p>
-          )}
-
-          <GradientButton
-            type="submit"
-            className="w-full"
-            size="lg"
-            disabled={isLoading}
-          >
-            {isLoading ? 'Creating account...' : 'Create Account'}
-          </GradientButton>
-        </form>
-
-        <p className="text-center mt-6 text-muted-foreground text-sm">
-          Already have an account?{' '}
-          <Link to="/login" className="text-primary hover:underline">
-            Sign in
-          </Link>
-        </p>
       </div>
     </div>
   );

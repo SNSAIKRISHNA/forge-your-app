@@ -15,7 +15,6 @@ import {
   BarChart3,
   Zap,
 } from 'lucide-react';
-import { ParticlesBackground } from '@/components/ParticlesBackground';
 import { useAuth, OrganizationMember } from '@/contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -80,20 +79,12 @@ const OrganizationDashboard = () => {
     }
   };
 
-  const getRoleBadgeClass = (role: string) => {
-    switch (role) {
-      case 'owner':
-        return 'badge-primary';
-      case 'admin':
-        return 'badge-warning';
-      default:
-        return 'badge-success';
-    }
-  };
-
   return (
-    <div className="min-h-screen flex">
-      <ParticlesBackground />
+    <div className="min-h-screen bg-background relative overflow-hidden flex">
+      {/* Background gradients */}
+      <div className="fixed inset-0 bg-gradient-radial from-primary/5 via-transparent to-transparent pointer-events-none" />
+      <div className="fixed top-1/4 -left-1/4 w-1/2 h-1/2 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="fixed bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
       
       {/* Sidebar */}
       <aside className="w-64 bg-card/50 backdrop-blur-sm border-r border-border p-6 flex flex-col relative z-10">
@@ -101,7 +92,7 @@ const OrganizationDashboard = () => {
           <div className="w-10 h-10 rounded-xl icon-container flex items-center justify-center">
             <Zap className="w-5 h-5 text-primary-foreground" />
           </div>
-          <span className="font-display font-bold text-lg text-foreground">Crystal</span>
+          <span className="font-semibold text-lg text-foreground">Crystal AI</span>
         </div>
 
         <nav className="flex-1 space-y-1">
@@ -153,17 +144,17 @@ const OrganizationDashboard = () => {
           {activeNav === 'Dashboard' && (
             <>
               {/* Header */}
-              <div className="mb-10 fade-in">
-                <h1 className="font-display text-3xl font-bold text-foreground mb-2">
+              <div className="mb-10 animate-fade-in">
+                <h1 className="text-3xl font-bold text-foreground mb-2">
                   {organization?.name}
                 </h1>
-                <p className="text-muted-foreground font-mono text-sm">
-                  Organization dashboard • {organization?.industry}
+                <p className="text-muted-foreground text-sm">
+                  Organization AI dashboard • {organization?.industry}
                 </p>
               </div>
 
               {/* Stats Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10 stagger-children">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
                 <StatCard
                   title="Team Members"
                   value={String(organization?.members.length || 0)}
@@ -187,9 +178,9 @@ const OrganizationDashboard = () => {
               </div>
 
               {/* Team Preview */}
-              <div className="slide-up" style={{ animationDelay: '0.3s' }}>
+              <div>
                 <div className="flex items-center justify-between mb-4">
-                  <h2 className="font-display text-xl font-bold text-foreground">
+                  <h2 className="text-xl font-bold text-foreground">
                     Team Members
                   </h2>
                   <button 
@@ -199,7 +190,7 @@ const OrganizationDashboard = () => {
                     View all →
                   </button>
                 </div>
-                <div className="bg-card rounded-xl border border-border p-6">
+                <div className="glass-card p-6">
                   <div className="space-y-3">
                     {organization?.members.slice(0, 4).map((member) => (
                       <MemberRow key={member.id} member={member} compact />
@@ -213,12 +204,12 @@ const OrganizationDashboard = () => {
           {activeNav === 'Team' && (
             <>
               {/* Team Header */}
-              <div className="flex items-center justify-between mb-8 fade-in">
+              <div className="flex items-center justify-between mb-8 animate-fade-in">
                 <div>
-                  <h1 className="font-display text-3xl font-bold text-foreground mb-2">
+                  <h1 className="text-3xl font-bold text-foreground mb-2">
                     Team Management
                   </h1>
-                  <p className="text-muted-foreground font-mono text-sm">
+                  <p className="text-muted-foreground text-sm">
                     Manage your organization members and their roles
                   </p>
                 </div>
@@ -232,7 +223,7 @@ const OrganizationDashboard = () => {
                   </DialogTrigger>
                   <DialogContent className="bg-card border-border">
                     <DialogHeader>
-                      <DialogTitle className="font-display text-xl">
+                      <DialogTitle className="text-xl">
                         Add Team Member
                       </DialogTitle>
                     </DialogHeader>
@@ -277,7 +268,7 @@ const OrganizationDashboard = () => {
               </div>
 
               {/* Members List */}
-              <div className="bg-card rounded-xl border border-border slide-up">
+              <div className="glass-card">
                 <div className="p-6 border-b border-border">
                   <h3 className="font-medium text-foreground">
                     All Members ({organization?.members.length})
@@ -312,7 +303,7 @@ const StatCard = ({
   value: string; 
   icon: React.ElementType;
 }) => (
-  <div className="card-hover bg-card rounded-xl p-6">
+  <div className="glass-card p-6">
     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
       <Icon className="w-6 h-6 text-primary" />
     </div>
