@@ -322,8 +322,141 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: var(--gradient-primary);
-    opacity: 0.6;
+    background: var(--gradient-button);
+    opacity: 0.8;
+  }
+
+  /* 3D Crystal styles */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .crystal-gem {
+    position: relative;
+    width: 120px;
+    height: 200px;
+    transform-style: preserve-3d;
+  }
+
+  .crystal-face {
+    position: absolute;
+    background: linear-gradient(
+      135deg,
+      hsl(180, 100%, 45%, 0.3) 0%,
+      hsl(270, 60%, 60%, 0.4) 50%,
+      hsl(180, 100%, 50%, 0.2) 100%
+    );
+    border: 1px solid hsl(180, 100%, 45%, 0.4);
+    backdrop-filter: blur(4px);
+  }
+
+  .crystal-front {
+    width: 80px;
+    height: 160px;
+    left: 20px;
+    top: 20px;
+    transform: translateZ(30px);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background: linear-gradient(
+      180deg,
+      hsl(270, 60%, 50%, 0.5) 0%,
+      hsl(180, 100%, 45%, 0.3) 30%,
+      hsl(220, 60%, 30%, 0.4) 70%,
+      hsl(180, 100%, 40%, 0.3) 100%
+    );
+  }
+
+  .crystal-back {
+    width: 80px;
+    height: 160px;
+    left: 20px;
+    top: 20px;
+    transform: translateZ(-30px) rotateY(180deg);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background: linear-gradient(
+      180deg,
+      hsl(220, 50%, 20%, 0.6) 0%,
+      hsl(180, 80%, 35%, 0.4) 50%,
+      hsl(270, 50%, 40%, 0.3) 100%
+    );
+  }
+
+  .crystal-left {
+    width: 60px;
+    height: 160px;
+    left: -10px;
+    top: 20px;
+    transform: rotateY(-60deg) translateZ(20px);
+    clip-path: polygon(100% 0%, 100% 100%, 0% 75%, 0% 25%);
+    background: linear-gradient(
+      180deg,
+      hsl(180, 100%, 45%, 0.4) 0%,
+      hsl(200, 80%, 40%, 0.3) 50%,
+      hsl(220, 60%, 30%, 0.4) 100%
+    );
+  }
+
+  .crystal-right {
+    width: 60px;
+    height: 160px;
+    right: -10px;
+    top: 20px;
+    transform: rotateY(60deg) translateZ(20px);
+    clip-path: polygon(0% 0%, 0% 100%, 100% 75%, 100% 25%);
+    background: linear-gradient(
+      180deg,
+      hsl(270, 60%, 55%, 0.5) 0%,
+      hsl(280, 50%, 45%, 0.4) 50%,
+      hsl(180, 80%, 40%, 0.3) 100%
+    );
+  }
+
+  .crystal-top {
+    width: 80px;
+    height: 60px;
+    left: 20px;
+    top: -10px;
+    transform: rotateX(70deg) translateZ(30px);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    background: linear-gradient(
+      135deg,
+      hsl(180, 100%, 50%, 0.6) 0%,
+      hsl(200, 90%, 55%, 0.5) 50%,
+      hsl(180, 100%, 45%, 0.4) 100%
+    );
+  }
+
+  .crystal-bottom {
+    width: 80px;
+    height: 60px;
+    left: 20px;
+    bottom: -10px;
+    transform: rotateX(-70deg) translateZ(30px);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    background: linear-gradient(
+      135deg,
+      hsl(220, 50%, 25%, 0.5) 0%,
+      hsl(180, 70%, 35%, 0.4) 100%
+    );
+  }
+
+  /* Feature pill styles */
+  .feature-pill {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: 9999px;
+    padding: 1rem 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .feature-pill:hover {
+    border-color: hsl(var(--primary) / 0.4);
+    box-shadow: 0 0 20px -5px hsl(180, 100%, 45%, 0.2);
   }
 }
 
