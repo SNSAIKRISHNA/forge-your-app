@@ -110,7 +110,6 @@
     border-radius: 50%;
     animation: float-particle 20s infinite ease-in-out;
   }
-  }
 
   .particle::before {
     content: '';
